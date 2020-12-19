@@ -1,5 +1,7 @@
 <template>
   <div>
+    <h2>Check Code / Logs for more info</h2>
+    <p>This is a demo application for understanding reativity</p>
     <p>{{ username }}</p>
     <p>{{ obj.name }}</p>
   </div>
