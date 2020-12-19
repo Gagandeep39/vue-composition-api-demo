@@ -11,6 +11,7 @@
   - [Computed](#computed)
   - [2 way binding](#2-way-binding)
   - [Watch](#watch)
+  - [Ref](#ref-1)
 
 ## Deployment
 
@@ -176,6 +177,37 @@ export default {
     return {
       firstName,
       lastName,
+    };
+  },
+};
+```
+
+## Ref
+
+- We dont have access to this.\$ref
+- Instead we creat a variable as `const abc = ref(null)` and expose it
+
+```html
+<input type="text" ref="ageInput" /> <button @click="setAge">Set age</button>
+```
+
+```js
+import { ref } from 'vue';
+
+export default {
+  setup() {
+    // ################Age ################
+    const ageInput = ref(null);
+    const age = ref(22);
+    function setAge() {
+      // .value is Twice because, when we use ref, we access the data using .value in options API,
+      // IN comosition API reference requires its own .value
+      age.value = age.value.value;
+      console.log(age.value);
+    }
+    return {
+      setAge,
+      ageInput,
     };
   },
 };

@@ -10,6 +10,8 @@
     <button @click="showAlert">Show alert</button>
     <input type="text" v-model="description" placeholder="Description" />
     {{ description }}
+    <input type="text" ref="ageInput" />
+    <button @click="setAge">Set age</button>
   </div>
 </template>
 
@@ -72,6 +74,13 @@ export default {
       console.log(newVal, oldVal); // newvalue - Array of parameters being atched, oldval - arra of param being watch
     });
 
+    // ################Age ################
+    const ageInput = ref(null);
+    const age = ref(22);
+    function setAge() {
+      age.value = age.value.value;
+      console.log(age.value);
+    }
     return {
       username,
       obj,
@@ -82,6 +91,8 @@ export default {
       setLastName,
       fullName,
       description,
+      setAge,
+      ageInput,
     };
   },
 };
