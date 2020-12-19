@@ -202,7 +202,7 @@ export default {
     function setAge() {
       // .value is Twice because, when we use ref, we access the data using .value in options API,
       // IN comosition API reference requires its own .value
-      age.value = age.value.value;
+      age.value = ageInput.value.value;
       console.log(age.value);
     }
     return {
