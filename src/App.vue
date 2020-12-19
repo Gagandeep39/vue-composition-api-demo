@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { isReactive, isRef, reactive, ref, toRefs, computed } from 'vue';
+import { isReactive, isRef, reactive, ref, toRefs, computed, watch } from 'vue';
 
 export default {
   setup() {
@@ -60,6 +60,17 @@ export default {
     // ################ 2 way binding ################
 
     const description = ref('');
+
+    // ################ Watchers ################
+    // Watch single value
+    watch(firstName, (newVal, oldVal) => {
+      console.log('First name was changed');
+      console.log(newVal, oldVal);
+    });
+    watch([firstName, lastName], (newVal, oldVal) => {
+      console.log('first name and last name changed');
+      console.log(newVal, oldVal); // newvalue - Array of parameters being atched, oldval - arra of param being watch
+    });
 
     return {
       username,

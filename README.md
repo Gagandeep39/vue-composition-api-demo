@@ -10,6 +10,7 @@
   - [Methods](#methods)
   - [Computed](#computed)
   - [2 way binding](#2-way-binding)
+  - [Watch](#watch)
 
 ## Deployment
 
@@ -148,4 +149,34 @@ export default {
 
 ```js
 const description = ref('');
+```
+
+## Watch
+
+- Execut a method if a value change
+
+```js
+import { ref, watch } from 'vue';
+
+export default {
+  setup() {
+    let firstName = ref('');
+    let lastName = ref('');
+    // ################ Watchers ################
+    // Watch single value
+    watch(firstName, (newVal, oldVal) => {
+      console.log('First name was changed');
+      console.log(newVal, oldVal);
+    });
+    watch([firstName, lastName], (newVal, oldVal) => {
+      console.log('first name and last name changed');
+      console.log(newVal, oldVal); // newvalue - Array of parameters being atched, oldval - arra of param being watch
+    });
+
+    return {
+      firstName,
+      lastName,
+    };
+  },
+};
 ```
