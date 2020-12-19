@@ -7,6 +7,7 @@
   - [Demo](#demo)
     - [ref](#ref)
     - [reactive](#reactive)
+  - [Methods](#methods)
 
 ## Deployment
 
@@ -83,3 +84,17 @@ export default {
 - A wrapper class, but we dont need to access to using `.value`
 - Can be accessed directly
 - Basically allow reactivity without wrappers such as `.value`
+
+## Methods
+
+- Same as writing functions in react and other javascript frameworks
+
+```js
+setup() {
+  // Function in Composition API
+  const showAlert = () => {
+    alert('This is an alert');
+  };
+  return { showAlert };
+},
+```

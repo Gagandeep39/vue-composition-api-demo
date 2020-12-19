@@ -4,6 +4,7 @@
     <p>This is a demo application for understanding reativity</p>
     <p>{{ username }}</p>
     <p>{{ obj.name }}</p>
+    <button @click="showAlert">Show alert</button>
   </div>
 </template>
 
@@ -34,7 +35,12 @@ export default {
     // Making child reactive
     const refObj = toRefs(obj2);
     console.log(isRef(refObj.name));
-    return { username, obj };
+
+    // Function in Composition API
+    const showAlert = () => {
+      alert('This is an alert');
+    };
+    return { username, obj, showAlert };
   },
 };
 </script>
