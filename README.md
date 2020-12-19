@@ -8,6 +8,7 @@
     - [ref](#ref)
     - [reactive](#reactive)
   - [Methods](#methods)
+  - [Computed](#computed)
 
 ## Deployment
 
@@ -97,4 +98,42 @@ setup() {
   };
   return { showAlert };
 },
+```
+
+## Computed
+
+- Called when variable inside it changes
+- Created as a method
+
+```html
+<input type="text" @input="setFirstName" />
+<input type="text" @input="setLastName" />
+<p>{{ fullName }}</p>
+```
+
+```js
+import { ref, computed } from 'vue';
+
+export default {
+  setup() {
+    // ############# Computed properties #############
+    let firstName = ref('');
+    let lastName = ref('');
+    function setFirstName(event) {
+      firstName.value = event.target.value;
+    }
+    function setLastName(event) {
+      lastName.value = event.target.value;
+    }
+    // Computed method
+    const fullName = computed(() => firstName.value + ' ' + lastName.value);
+    return {
+      firstName,
+      lastName,
+      setFirstName,
+      setLastName,
+      fullName,
+    };
+  },
+};
 ```

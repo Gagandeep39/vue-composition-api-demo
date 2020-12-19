@@ -4,26 +4,29 @@
     <p>This is a demo application for understanding reativity</p>
     <p>{{ username }}</p>
     <p>{{ obj.name }}</p>
+    <input type="text" @input="setFirstName" />
+    <input type="text" @input="setLastName" />
+    <p>{{ fullName }}</p>
     <button @click="showAlert">Show alert</button>
   </div>
 </template>
 
 <script>
-import { isReactive, isRef, reactive, ref, toRefs } from 'vue';
+import { isReactive, isRef, reactive, ref, toRefs, computed } from 'vue';
 
 export default {
   setup() {
     // Refs
     const username = ref('Gagandeep');
     const obj = ref({ name: 'Gagan', age: 21 });
-    // ###########  Ref  #############
+    // ###############  Ref  ################
     // Accessing object
     console.log(obj);
     console.log(obj.value.name);
     // Checkiing if it is reactive
     console.log(isRef(obj)); // True
     console.log(isRef(obj.value.name)); // False
-    // ###########  Reactive  #############
+    // ###############  Reactive  ###############
     // Reactive
     const obj2 = reactive({ name: 'Gagan', age: 21 });
     // Accessing object
@@ -36,11 +39,31 @@ export default {
     const refObj = toRefs(obj2);
     console.log(isRef(refObj.name));
 
-    // Function in Composition API
+    // ############## Function #############
     const showAlert = () => {
       alert('This is an alert');
     };
-    return { username, obj, showAlert };
+
+    // ############# Computed properties #############
+    let firstName = ref('');
+    let lastName = ref('');
+    function setFirstName(event) {
+      firstName.value = event.target.value;
+    }
+    function setLastName(event) {
+      lastName.value = event.target.value;
+    }
+    const fullName = computed(() => firstName.value + ' ' + lastName.value);
+    return {
+      username,
+      obj,
+      showAlert,
+      firstName,
+      lastName,
+      setFirstName,
+      setLastName,
+      fullName,
+    };
   },
 };
 </script>
