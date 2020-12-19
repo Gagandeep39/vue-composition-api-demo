@@ -14,6 +14,7 @@
   - [Ref](#ref-1)
   - [Custom components](#custom-components)
   - [Provide and inject](#provide-and-inject)
+  - [Options VS Composition API](#options-vs-composition-api)
 
 ## Deployment
 
@@ -283,3 +284,13 @@ provide('lastName', lastName);
 ```js
 const lastName = inject('lastName');
 ```
+
+## Options VS Composition API
+
+| Options API                   | Composition API                      |
+| ----------------------------- | ------------------------------------ |
+| `data() {...}`                | `ref()`, `reactive()`                |
+| `methods: { doSomething(){}}` | `function doSmth(){}`                |
+| `computed: { val(){}}`        | `const val = computed(() => {})`     |
+| `watch: {val(){}}`            | `watch(val, (oldVal, newVal) => {})` |
+| `provide: {}`, `inject: []`   | `provide(key, value)`, `inject()`    |
