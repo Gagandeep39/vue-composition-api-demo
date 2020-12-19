@@ -8,6 +8,8 @@
     <input type="text" @input="setLastName" />
     <p>{{ fullName }}</p>
     <button @click="showAlert">Show alert</button>
+    <input type="text" v-model="description" placeholder="Description" />
+    {{ description }}
   </div>
 </template>
 
@@ -54,6 +56,11 @@ export default {
       lastName.value = event.target.value;
     }
     const fullName = computed(() => firstName.value + ' ' + lastName.value);
+
+    // ################ 2 way binding ################
+
+    const description = ref('');
+
     return {
       username,
       obj,
@@ -63,6 +70,7 @@ export default {
       setFirstName,
       setLastName,
       fullName,
+      description,
     };
   },
 };

@@ -9,6 +9,7 @@
     - [reactive](#reactive)
   - [Methods](#methods)
   - [Computed](#computed)
+  - [2 way binding](#2-way-binding)
 
 ## Deployment
 
@@ -136,4 +137,15 @@ export default {
     };
   },
 };
+```
+
+## 2 way binding
+
+```html
+<input type="text" v-model="description" placeholder="Description" />
+{{description }}
+```
+
+```js
+const description = ref('');
 ```
