@@ -15,6 +15,7 @@
   - [Custom components](#custom-components)
   - [Provide and inject](#provide-and-inject)
   - [Options VS Composition API](#options-vs-composition-api)
+  - [Lifecycle Hooks](#lifecycle-hooks)
 
 ## Deployment
 
@@ -294,3 +295,25 @@ const lastName = inject('lastName');
 | `computed: { val(){}}`        | `const val = computed(() => {})`     |
 | `watch: {val(){}}`            | `watch(val, (oldVal, newVal) => {})` |
 | `provide: {}`, `inject: []`   | `provide(key, value)`, `inject()`    |
+
+## Lifecycle Hooks
+
+- We import it lke watch, provide etc and use it inside `setup()`,
+
+| Options API              | Composition API              |
+| ------------------------ | ---------------------------- |
+| beforeCreated, created   | setup() replaces this hooks  |
+| beforeMount, mounted     | onBeforeMount, onMounted     |
+| beforeUpdate, updated    | onBeforeUpdate, onUpdated    |
+| beforeUnmount, unmounted | onBeforeUnmount, onUnmounted |
+
+- Code Implementation
+
+```js
+onBeforeMount(() => console.log('onBeforeMount'));
+onMounted(() => console.log('onMounted'));
+onBeforeUpdate(() => console.log('onBeforeUpdate'));
+onUpdated(() => console.log('onUpdated'));
+onBeforeUnmount(() => console.log('onBeforeUnmount'));
+onUnmounted(() => console.log('onUnmounted'));
+```

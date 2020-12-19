@@ -26,6 +26,12 @@ import {
   computed,
   watch,
   provide,
+  onBeforeMount,
+  onMounted,
+  onBeforeUpdate,
+  onUpdated,
+  onBeforeUnmount,
+  onUnmounted,
 } from 'vue';
 import UserData from './components/UserData.vue';
 
@@ -96,6 +102,15 @@ export default {
 
     // ################ Provide ################
     provide('lastName', lastName);
+
+    // ################ Lifecycle ################
+    onBeforeMount(() => console.log('onBeforeMount'));
+    onMounted(() => console.log('onMounted'));
+    onBeforeUpdate(() => console.log('onBeforeUpdate'));
+    onUpdated(() => console.log('onUpdated'));
+    onBeforeUnmount(() => console.log('onBeforeUnmount'));
+    onUnmounted(() => console.log('onUnmounted'));
+
     return {
       username,
       obj,
