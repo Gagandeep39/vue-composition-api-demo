@@ -13,6 +13,7 @@
   - [Watch](#watch)
   - [Ref](#ref-1)
   - [Custom components](#custom-components)
+  - [Provide and inject](#provide-and-inject)
 
 ## Deployment
 
@@ -268,4 +269,17 @@ setup(props) {
       combination,
     };
   },
+```
+
+## Provide and inject
+
+- Used to pass data to child and their child components
+- We call a methiod similar to watch
+
+```js
+provide('lastName', lastName);
+```
+
+```js
+const lastName = inject('lastName');
 ```

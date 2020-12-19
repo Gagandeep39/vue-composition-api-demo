@@ -17,7 +17,16 @@
 </template>
 
 <script>
-import { isReactive, isRef, reactive, ref, toRefs, computed, watch } from 'vue';
+import {
+  isReactive,
+  isRef,
+  reactive,
+  ref,
+  toRefs,
+  computed,
+  watch,
+  provide,
+} from 'vue';
 import UserData from './components/UserData.vue';
 
 export default {
@@ -84,6 +93,9 @@ export default {
       age.value = ageInput.value.value;
       console.log(age.value);
     }
+
+    // ################ Provide ################
+    provide('lastName', lastName);
     return {
       username,
       obj,
