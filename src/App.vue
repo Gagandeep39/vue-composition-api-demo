@@ -6,19 +6,32 @@
 </template>
 
 <script>
-import { ref } from 'vue';
+import { isReactive, isRef, reactive, ref, toRefs } from 'vue';
 
 export default {
   setup() {
+    // Refs
     const username = ref('Gagandeep');
     const obj = ref({ name: 'Gagan', age: 21 });
-    console.log(username);
-    // Return all data we want to expose to template
-
-    setTimeout(() => {
-      username.value = 'POkemon';
-      obj.value.name = 'Gagandeep';
-    }, 100);
+    // ###########  Ref  #############
+    // Accessing object
+    console.log(obj);
+    console.log(obj.value.name);
+    // Checkiing if it is reactive
+    console.log(isRef(obj)); // True
+    console.log(isRef(obj.value.name)); // False
+    // ###########  Reactive  #############
+    // Reactive
+    const obj2 = reactive({ name: 'Gagan', age: 21 });
+    // Accessing object
+    console.log(obj2);
+    console.log(obj2.name);
+    // Checkiing if it is reactive
+    console.log(isReactive(obj2)); // True
+    console.log(isReactive(obj2.name)); // False
+    // Making child reactive
+    const refObj = toRefs(obj2);
+    console.log(isRef(refObj.name));
     return { username, obj };
   },
 };
