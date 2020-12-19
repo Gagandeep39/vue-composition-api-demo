@@ -12,13 +12,16 @@
     {{ description }}
     <input type="text" ref="ageInput" />
     <button @click="setAge">Set age</button>
+    <user-data :user-name="username" :age="age" />
   </div>
 </template>
 
 <script>
 import { isReactive, isRef, reactive, ref, toRefs, computed, watch } from 'vue';
+import UserData from './components/UserData.vue';
 
 export default {
+  components: { UserData },
   setup() {
     // Refs
     const username = ref('Gagandeep');
@@ -78,7 +81,7 @@ export default {
     const ageInput = ref(null);
     const age = ref(22);
     function setAge() {
-      age.value = age.value.value;
+      age.value = ageInput.value.value;
       console.log(age.value);
     }
     return {
@@ -93,6 +96,7 @@ export default {
       description,
       setAge,
       ageInput,
+      age,
     };
   },
 };

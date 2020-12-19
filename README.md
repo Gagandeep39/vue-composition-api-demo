@@ -12,6 +12,7 @@
   - [2 way binding](#2-way-binding)
   - [Watch](#watch)
   - [Ref](#ref-1)
+  - [Custom components](#custom-components)
 
 ## Deployment
 
@@ -211,4 +212,60 @@ export default {
     };
   },
 };
+```
+
+## Custom components
+
+- Components are created the same way as options API
+- To pass any data, we need to expose the data
+
+```vue
+<template>
+  <div>
+    <h2>{{ userName }}</h2>
+    <h3>{{ age }}</h3>
+  </div>
+</template>
+<script>
+export default {
+  props: ['userName', 'age'],
+};
+```
+
+```html
+<user-data :user-name="username" :age="age" />
+```
+
+```js
+import { ref } from 'vue';
+import UserData from './components/UserData.vue';
+
+export default {
+  components: { UserData },
+  setup() {
+    // ################Age ################
+    const ageInput = ref(null);
+    const age = ref(22);
+    function setAge() {
+      age.value = ageInput.value.value;
+      console.log(age.value);
+    }
+    return {
+      setAge,
+      ageInput,
+      age,
+    };
+  },
+};
+```
+
+- Accessing props inside a component
+
+```js
+setup(props) {
+    const combination = computed(() => props.userName + ' ' + props.age);
+    return {
+      combination,
+    };
+  },
 ```
