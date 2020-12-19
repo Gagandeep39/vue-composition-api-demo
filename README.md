@@ -1,24 +1,25 @@
-# vue-composition-api-demo
+# Vue Composition API
 
-## Project setup
-```
-yarn install
-```
+- [Vue Composition API](#vue-composition-api)
+  - [Deployment](#deployment)
+  - [Description](#description)
+  - [Composition API Details](#composition-api-details)
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+## Deployment
 
-### Compiles and minifies for production
-```
-yarn build
-```
+- Checkout deployment at <https://gagandeep39.github.io/vue-composition-api-demo/>
 
-### Lints and fixes files
-```
-yarn lint
-```
+## Description
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- There are 2 ways of writing vue components
+  - Options API (Traditional)
+  - Compositions API
+
+## Composition API Details
+
+- Alternative way of writing Vue Logic
+- Used for Larger Apps
+- Main problem with large apps: Too much data and UI code in large apps
+- In options API, lot of similar code that should belong together is split across dofferent parts such as watcher, methods, computed etc.
+- Composition API allows reusing logic
+- Basically merging `data()`, `methods`, `computed`, `watch` into `setup()`
